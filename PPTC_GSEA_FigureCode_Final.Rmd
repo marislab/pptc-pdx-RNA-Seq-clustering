@@ -1,0 +1,172 @@
+---
+title: "GSEA_PDX_Paper"
+output: html_document
+---
+---
+title: "GSEA_PDX_Paper"
+output: html_document
+---
+
+```{r}
+
+#--------------------------------go terms/hallmark genes -----------------------------
+
+#set cwd to where the gsea results are
+
+setwd("/pptc-pdx-gsea/bader")
+
+#upload clinical data file for histology/prior information 
+
+clinical_data = read.delim("~/PPTC/Data/2019-02-09-pdx-clinical-final-for-paper.txt",header=T,stringsAsFactors = T)
+
+clinical_data = clinical_data[clinical_data$Model.Part.of.PPTC=="yes",]
+
+#in the gsea analysis folder upload all results per cancer 
+myfiles = list.files("/pptc-pdx-gsea/bader")
+pptc_gsea = do.call(rbind, lapply(myfiles, function(x) read.delim(x,stringsAsFactors = F,header=F)))
+pptc_gsea$Type = "None"
+
+#merging all the results and adding headers = cancer name as a column
+
+headers= c(as.numeric(rownames(pptc_gsea[grep("padj",pptc_gsea$V3),])),21294)
+
+#this loop will generate an error at the end, which should be ignored
+for (ii in 1:length(headers)){
+  pptc_gsea[c(headers[ii]:headers[ii+1]-1),]$Type = myfiles[ii]
+}
+
+colnames(pptc_gsea)  = pptc_gsea[1,]
+colnames(pptc_gsea)[9] = "Cancer"
+
+#remove duplicate colnames
+pptc_gsea = pptc_gsea[grep("padj",pptc_gsea$padj,invert=T),]
+
+#select for the MsigDB hallmark gene sets
+pptc_gsea_hallmark = pptc_gsea[grep("HALLMARK",pptc_gsea$pathway),]
+
+library(pheatmap)
+library(reshape2)
+
+#unmelt the data frame; NES = normalized enrichment score
+pptc_gsea_hallmark_map = dcast(pptc_gsea_hallmark, pptc_gsea_hallmark$pathway~pptc_gsea_hallmark$Cancer,value.var="NES")
+
+#not all pathways were signficant in each cancer, if so label as 0 NES
+pptc_gsea_hallmark_map[is.na(pptc_gsea_hallmark_map)] = 0
+
+#set rownames, remove that column
+rownames(pptc_gsea_hallmark_map) = pptc_gsea_hallmark_map$`pptc_gsea_hallmark$pathway`
+pptc_gsea_hallmark_map = pptc_gsea_hallmark_map[,-1]
+
+#only keep the histologies that had at least 4 samples 
+pptc_gsea_hallmark_map = pptc_gsea_hallmark_map[,colnames(pptc_gsea_hallmark_map)%in%c("Astrocytoma","ATRT","BCP-ALL","Ependymoma","ETP-ALL","Ewing Sarcoma","Fusion- RMS","Fusion+ RMS","Glioblastoma","Medulloblastoma","MLL-ALL","Neuroblastoma","Osteosarcoma","Ph-likeALL","T-ALL","Wilms")]
+
+pptc_gsea_hallmark_map = data.matrix(pptc_gsea_hallmark_map)
+
+#update clinical data so that only the relevant histologies are kept
+clinical_data = clinical_data[clinical_data$Histology.Detailed%in%colnames(pptc_gsea_hallmark_map),]
+
+#convert names to lower and remove certain hallmarks
+rownames(pptc_gsea_hallmark_map) = tolower(rownames(pptc_gsea_hallmark_map))
+pptc_gsea_hallmark_map = pptc_gsea_hallmark_map[grep("angiogenesis|spermatogenesis|androgen response|peroxisome|pancreas",rownames(pptc_gsea_hallmark_map),invert=T,),]
+
+#annotation for rows in heatmap lable =  the category of the hallmark; specified mannually via this list 
+
+rowdf = data.frame(rownames(pptc_gsea_hallmark_map))
+rowdf$category = c("Development","Immune","Signaling","Cellular Component","Pathway","Metabolic","Metabolic","Immune","Immune","DNA damage","Proliferation","Development","Signaling","Signaling","Metabolic","Proliferation","Metabolic","Signaling","Metabolic","Pathway","Immune","Immune","Immune","Immune","Immune","Signaling","Signaling","Proliferation","Signaling","Proliferation","Proliferation","Development","Signaling","Metabolic","Proliferation","Signaling","Pathway","Pathway","Signaling","Signaling","Pathway","DNA damage","DNA damage","Signaling","Metabolic")
+rownames(rowdf) = rowdf[,1]
+rowdf =rowdf[order(rowdf$category),]
+rowdf[,1] = NULL
+
+# obtain the histology oncoprint data for the column annotation 
+temp = cbind(as.character(clinical_data$Histology.Detailed),as.character(clinical_data$Histology.Oncoprints))
+temp = temp[temp[,1]%in%colnames(pptc_gsea_hallmark_map),]
+temp = temp[!duplicated(temp[,1]),]
+rownames(temp) = temp[,1]
+temp = data.frame(temp)
+
+#annotation for columns = the histology oncoprint
+coldf = data.frame(colnames(pptc_gsea_hallmark_map))
+rownames(coldf) = coldf[,1]
+coldf$Priors = as.character(temp[rownames(coldf),2])
+coldf = coldf[order(coldf$Priors),]
+coldf = data.frame(coldf)
+
+#change the order of data frame based on the column and row annotation set orders 
+pptc_gsea_hallmark_map = pptc_gsea_hallmark_map[rownames(rowdf),]
+pptc_gsea_hallmark_map = pptc_gsea_hallmark_map[,rownames(coldf)]
+
+#reduce complex row name
+new_name = c()
+for (names in rownames(pptc_gsea_hallmark_map)){
+  new_name = c(new_name,strsplit(names,"%")[[1]][1])
+}
+ 
+#update names for data frame and row annotation
+rownames(pptc_gsea_hallmark_map) = new_name
+rownames(rowdf) = new_name
+
+rownames(pptc_gsea_hallmark_map) = gsub("hallmark_","",rownames(pptc_gsea_hallmark_map))
+rownames(rowdf) = gsub("hallmark_","",rownames(rowdf))
+
+rownames(pptc_gsea_hallmark_map)  = tolower(rownames(pptc_gsea_hallmark_map))
+rownames(rowdf) = tolower(rownames(rowdf))
+
+
+#order the colnames based on most enrichment 
+name_order = c()
+for (cat in names(table(coldf$Priors))){
+  print(cat)
+  names = rownames(coldf)[coldf[,2] == cat]
+  if (length(names) >1){
+    sums = colSums(pptc_gsea_hallmark_map[,names])
+    sums = sort(sums,decreasing = T)
+    name_order = c(name_order,names(sums))
+  }
+  else{
+    name_order = c(name_order,names)
+  }
+}
+
+#switch the order of wilms tumor and osteosarcome
+name_order[12] = "Wilms"
+name_order[13] = "Osteosarcoma"
+
+#update data frame/column annotation with the new order 
+pptc_gsea_hallmark_map = pptc_gsea_hallmark_map[,name_order]
+coldf = coldf[name_order,]
+coldf[,1] = NULL
+
+
+#specify heatmap colors 
+colors = colorRampPalette(c("light yellow","orange","red","black"), space="Lab")(64)
+
+#change name of sarcomes to reflect biology
+coldf$Priors = gsub("sarcoma","soft_sarcoma",coldf$Priors)
+coldf$Priors = gsub("osteosoft_sarcoma","osteosarcoma",coldf$Priors)
+
+
+#color blind pallette for column annotation 
+
+anno_colors <- list(Priors = c(brain = "#009E73", leukemia="#0072B2", neuroblastoma="#CC79A7", osteosarcoma="#999999", renal="#F0E442", soft_sarcoma="#56B4E9"))
+
+#function to flip the row annotation from left to right (the actual text)
+
+draw_colnames_45 <- function (coln, gaps, ...) {
+    coord <- pheatmap:::find_coordinates(length(coln), gaps)
+    x     <- coord$coord - 0.5 * coord$size
+    res   <- grid::textGrob(
+      coln, x = x, y = unit(1, "npc") - unit(3,"bigpts"),
+      vjust = 0.75, hjust = 1, rot = 90, gp = grid::gpar(...)
+    )
+    return(res)
+}
+assignInNamespace(
+  x = "draw_colnames",
+  value = "draw_colnames_45",
+  ns = asNamespace("pheatmap")
+)
+
+#plot heatmap!
+pheatmap(pptc_gsea_hallmark_map,cluster_rows=F, show_colnames= T,show_rownames=T,cluster_cols=F, ,annotation_col=coldf,annotation_colors = anno_colors,color=colors,gaps_col = c(5,10,11,12,13))
+
+```
