@@ -7,7 +7,7 @@ PPTC PDX RNA Clustering & GSEA
 :authors: Jacob Pfeil, Apexa Modi
 :contact: Jacob Pfiel (jpfeil@ucsc.edu), Apexa Modi (modia@email.chop.edu)
 :organization: UCSC, CHOP
-:status: Completed
+:status: In-process
 :date: |date|
 
 .. meta::
