@@ -50,6 +50,9 @@ pptc_gsea_hallmark = pptc_gsea[grep("HALLMARK",pptc_gsea$pathway),]
 
 library(pheatmap)
 library(reshape2)
+library(dplyr)
+library(data.table)
+library(ggplot2)
 
 #unmelt the data frame; NES = normalized enrichment score
 pptc_gsea_hallmark_map = dcast(pptc_gsea_hallmark, pptc_gsea_hallmark$pathway~pptc_gsea_hallmark$Cancer,value.var="NES")
@@ -164,6 +167,7 @@ draw_colnames_45 <- function (coln, gaps, ...) {
     )
     return(res)
 }
+
 assignInNamespace(
   x = "draw_colnames",
   value = "draw_colnames_45",
