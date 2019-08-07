@@ -1,0 +1,245 @@
+Model	Histology
+ALL-02	BCP-ALL
+ALL-03	MLL-ALL
+ALL-04	Ph+-ALL
+ALL-07	BCP-ALL
+ALL-08	T-ALL
+ALL-10	Ph-likeALL
+ALL-102	Ph-likeALL
+ALL-105	Ph-likeALL
+ALL-106	Ph-likeALL
+ALL-107	Ph-likeALL
+ALL-108	Ph-likeALL
+ALL-11	BCP-ALL
+ALL-115	Ph-likeALL
+ALL-116	Ph-likeALL
+ALL-117	Ph-likeALL
+ALL-118	Ph-likeALL
+ALL-121	T-ALL
+ALL-122	BCP-ALL
+ALL-123	BCP-ALL
+ALL-16	T-ALL
+ALL-17	BCP-ALL
+ALL-19	BCP-ALL
+ALL-25	BCP-ALL
+ALL-26	BCP-ALL
+ALL-27	T-ALL
+ALL-28	BCP-ALL
+ALL-29	T-ALL
+ALL-30	T-ALL
+ALL-31	T-ALL
+ALL-32	T-ALL
+ALL-33	T-ALL
+ALL-39	T-ALL
+ALL-42	T-ALL
+ALL-43	T-ALL
+ALL-46	T-ALL
+ALL-47	T-ALL
+ALL-50	BCP-ALL
+ALL-51	BCP-ALL
+ALL-52	BCP-ALL
+ALL-53	BCP-ALL
+ALL-54	BCP-ALL
+ALL-55	Ph+-ALL
+ALL-56	Ph+-ALL
+ALL-57	BCP-ALL
+ALL-58	BCP-ALL
+ALL-59	BCP-ALL
+ALL-60	BCP-ALL
+ALL-61	BCP-ALL
+ALL-63	BCP-ALL
+ALL-75	BCP-ALL
+ALL-80	T-ALL
+ALL-81	T-ALL
+ALL-82	BCP-ALL
+ALL-83	BCP-ALL
+ALL-84	BCP-ALL
+ALL-85	T-ALL
+ALL-87	BCP-ALL
+ALL-88	BCP-ALL
+ALL-90	T-ALL
+ALL-91	BCP-ALL
+ALL-93	BCP-ALL
+ALL-94	BCP-ALL
+ALL-95	BCP-ALL
+ALL-97	T-ALL
+ASPS-KY	ASPS
+BT-27	CNS embryonal NOS
+BT-29	ATRT
+CHLA-258	Ewing Sarcoma
+CHLA-79	Neuroblastoma
+COG-N-415x	Neuroblastoma
+COG-N-421x	Neuroblastoma
+COG-N-424x	Neuroblastoma
+COG-N-426x-Felix-PDX	Neuroblastoma
+COG-N-440x	Neuroblastoma
+COG-N-452x	Neuroblastoma
+COG-N-453x	Neuroblastoma
+COG-N-471x	Neuroblastoma
+COG-N-480x	Neuroblastoma
+COG-N-496x	Neuroblastoma
+COG-N-519x	Neuroblastoma
+COG-N-549x	Neuroblastoma
+COG-N-557x	Neuroblastoma
+COG-N-560x	Neuroblastoma
+COG-N-561x	Neuroblastoma
+COG-N-564x	Neuroblastoma
+COG-N-589x	Neuroblastoma
+COG-N-590x	Neuroblastoma
+COG-N-603x	Neuroblastoma
+COG-N-619x	Neuroblastoma
+COG-N-620x	Neuroblastoma
+COG-N-623x	Neuroblastoma
+COG-N-624x	Neuroblastoma
+COG-N-625x	Neuroblastoma
+ES-1	Ewing Sarcoma
+ES-4	Ewing Sarcoma
+ES-6	Ewing Sarcoma
+ES-8	Ewing Sarcoma
+ETP-1	ETP-ALL
+ETP-2	ETP-ALL
+ETP-3	ETP-ALL
+ETP-4	ETP-ALL
+ETP-5	ETP-ALL
+ETP-6	ETP-ALL
+EW-5	Ewing Sarcoma
+EW-8	Ewing Sarcoma
+G401	Extracranial Rhabdoid
+IBs-2373PNET	ETMR
+IBs-P1215DIPG	DIPG
+IBs-W0128DIPG	DIPG
+IC-1128GBM	Glioblastoma
+IC-1425EPN	Ependymoma
+IC-1499EPB	Ependymoblastoma
+IC-1621GBM	Glioblastoma
+IC-22909PNET-rIII	CNS EFT-CIC
+IC-2664PNET	Astrocytoma
+IC-3635PXA	Astrocytoma
+IC-3752GBM	Glioblastoma
+IC-6634GBM	Glioblastoma
+IC-9320GCT	CNS germinoma
+IC-9635EPN	Ependymoma
+IC-9811EPN	Ependymoma
+ICB-1744MB	Medulloblastoma
+ICb-10593ATRT	ATRT
+ICb-10614EPN	Ependymoma
+ICb-1078MB	Medulloblastoma
+ICb-1140MB	Medulloblastoma
+ICb-1197MB	Medulloblastoma
+ICb-1338MB	Medulloblastoma
+ICb-1343ENB	ETMR
+ICb-1494MB	Medulloblastoma
+ICb-1595MB	Medulloblastoma
+ICb-2002EPN	Ependymoma
+ICb-2123MB	Medulloblastoma
+ICb-2164MB	Medulloblastoma
+ICb-2555MB	Medulloblastoma
+ICb-3130MB	Medulloblastoma
+ICb-3400MB	Medulloblastoma
+ICb-5108ATRT	ATRT
+ICb-5323EPN	Ependymoma
+ICb-5610MB	Medulloblastoma
+ICb-8008MB	Medulloblastoma
+ICb-9508MB	Medulloblastoma
+ICb-984MB	Medulloblastoma
+ICb-9850PNET	CNS EFT-CIC
+ICb-J1017MB	Medulloblastoma
+ICb-L1115ATRT	ATRT
+ICb-S1129MB	ETMR
+IRS-56	Fusion- RMS
+IRS-68	Fusion- RMS
+KT-10	Wilms
+KT-11	Wilms
+KT-12	ATRT
+KT-13	Wilms
+KT-14	Extracranial Rhabdoid
+KT-18	Wilms
+KT-6	Wilms
+KT-8	Wilms
+KT-9	Wilms
+MLL-1	MLL-ALL
+MLL-14	MLL-ALL
+MLL-2	MLL-ALL
+MLL-3	MLL-ALL
+MLL-5	MLL-ALL
+MLL-6	MLL-ALL
+MLL-7	MLL-ALL
+MLL-8	MLL-ALL
+MLL-86	MLL-ALL
+NB-1382	Neuroblastoma
+NB-1643	Neuroblastoma
+NB-1691	Neuroblastoma
+NB-1771	Neuroblastoma
+NB-EBc1	Neuroblastoma
+NB-Fly-623m	Neuroblastoma
+NB-SD	Neuroblastoma
+NCH-ARMS-2-NCH-S13-7484	Fusion+ RMS
+NCH-CA-1	Small Cell Carcinoma
+NCH-CA-2	Small Cell Carcinoma
+NCH-CA-3	Colon Carcinoma
+NCH-CCS-1	Clear Cell Sarcoma
+NCH-ERMS-1-NCH-RMS-1	Fusion- RMS
+NCH-HEP1	Hepatoblastoma
+NCH-MB-1	Medulloblastoma
+NCH-MN-1	Astrocytoma
+NCH-NB-1	Neuroblastoma
+NCH-OS-1	Osteosarcoma
+NCH-PXA-1	Astrocytoma
+NCH-RBD-2	Extracranial Rhabdoid
+NCH-RBD-4	ATRT
+NCH-WT-4	Wilms
+NCH-WT-5	Wilms
+NCH-WT-6-S13-1506	Wilms
+NCH-WT-7	Wilms
+NCH-WT-8-S13-3700	Wilms
+NCI-ASPS	ASPS
+OS-1	Osteosarcoma
+OS-2	Osteosarcoma
+OS-29	Osteosarcoma
+OS-31	Osteosarcoma
+OS-32	Osteosarcoma
+OS-33	Osteosarcoma
+OS-34	Osteosarcoma
+OS-34-SJ	Osteosarcoma
+OS-41	Osteosarcoma
+OS-42	Osteosarcoma
+OS-43-TPMX	Osteosarcoma
+OS-44	Osteosarcoma
+OS-44-KPDX-x	Osteosarcoma
+OS-45-TSX-pr1	Osteosarcoma
+OS-46	Osteosarcoma
+OS-46-AOX	Osteosarcoma
+OS-47-SJ	Osteosarcoma
+OS-48	Osteosarcoma
+OS-49-SJ	Osteosarcoma
+OS-49-STTX-sc	Osteosarcoma
+OS-51-CHLX	Osteosarcoma
+OS-52-SJ	Osteosarcoma
+OS-54-OHS-x	Osteosarcoma
+OS-54-SJ	Osteosarcoma
+OS-55	Osteosarcoma
+OS-55-SBX	Osteosarcoma
+OS-56-TTX	Osteosarcoma
+OS-60	Osteosarcoma
+OS-9	Osteosarcoma
+PAKHZT	Ph-likeALL
+PAKRSL	Ph-likeALL
+PAKSWW	Ph-likeALL
+PAKVKK	Ph-likeALL
+PAKYEP	Ph-likeALL
+PALJDL	Ph-likeALL
+PALKTY	Ph-likeALL
+PALLSD	Ph-likeALL
+PALNTB	BCP-ALL
+PALTWS	BCP-ALL
+PAMDRM	Ph-likeALL
+Rh-10	Fusion+ RMS
+Rh-12	Fusion- RMS
+Rh-30	Fusion+ RMS
+Rh-30R	Fusion+ RMS
+Rh-36	Fusion- RMS
+Rh-41	Fusion+ RMS
+Rh-65	Fusion+ RMS
+Rh-70	Fusion- RMS
+SK-NEP-1	Ewing Sarcoma
+TC-71	Ewing Sarcoma
